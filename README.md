@@ -12,6 +12,6 @@ Things should be included in this :
 # Outlier Handling - Election Result Portugal 2019
    - first we have identified  the outlier using Boxplot.
    - after finding outliers , we try to clip with IQR method
-   - finaaly ,again verify with Boxplot
+   - finally ,again verify with Boxplot
 
 ######################################################################################################################################################################
