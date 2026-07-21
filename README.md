@@ -1,6 +1,6 @@
 ## Project Overview: Election Dataset Portugal - Regression
 
-This notebook details a machine learning project focused on predicting `FinalMandates` using the Real-Time Election Results Portugal 2019 dataset. The process involves comprehensive data preprocessing, feature engineering, and the implementation and evaluation of various regression models, particularly focusing on the K-Nearest Neighbors (KNN) Regressor.
+This notebook details a machine learning project focused on predicting `FinalMandates` using the Real-Time Election Results Portugal 2019 dataset. The process involves comprehensive data preprocessing, feature engineering, and the implementation and evaluation of various regression models, particularly focusing on the K-Nearest Neighbors (KNN) Regressor and Linear Regression.
 
 ### Objectives
 
@@ -60,6 +60,13 @@ This notebook details a machine learning project focused on predicting `FinalMan
 - **Hyperparameter Tuning (Grid Search CV)**: `GridSearchCV` was used to find optimal hyperparameters (`n_neighbors`, `weights`) for `KNeighborsRegressor`.
 - **Hyperparameter Tuning (Randomized Search CV)**: `RandomizedSearchCV` was used for a broader search of hyperparameters (`n_neighbors`, `weights`, `p`) for `KNeighborsRegressor`.
 
+#### 3. Linear Regression Model
+- **Baseline Linear Regression Model**: Trained a `LinearRegression` on the `X_train` and `y_train`.
+- **Boosting with Linear Regression**: An `AdaBoostRegressor` was implemented using `LinearRegression` as the base estimator.
+- **Cross-Validation (K-Fold)**: `KFold` cross-validation with 4 splits (`n_splits=4`, `shuffle=True`, `random_state=33`) was applied to the `LinearRegression`.
+- **Hyperparameter Tuning (Grid Search CV)**: `GridSearchCV` was used to find optimal hyperparameters (`fit_intercept`, `positive`) for `LinearRegression`.
+- **Hyperparameter Tuning (Randomized Search CV)**: `RandomizedSearchCV` was used for a broader search of hyperparameters (`fit_intercept`, `positive`) for `LinearRegression`.
+
 ### Model Evaluation
 
 The models were evaluated using the following regression metrics:
@@ -92,4 +99,29 @@ The models were evaluated using the following regression metrics:
     - MSE: 0.0261
     - R² Score: 0.9995
 
-*(Further models like SVM, Decision Tree, and Linear Regression are building....)*
+#### Linear Regressor Evaluation:
+- **Baseline Linear Regression Model**:
+    - MSE: 13.7068
+    - MAE: 0.8314
+    - R² Score: 0.7354
+- **Boosting Linear Regression Model**:
+    - MSE: 13.9174
+    - MAE: 0.8718
+    - R² Score: 0.7314
+- **KFold Cross-validation for Linear Regression**:
+    - Cross validation scores: [75.24%, 82.39%, 86.35%, 83.63%]
+    - Mean of CV scores: 81.90%
+- **Linear Regression (After Hyperparameter Tuning - Grid Search CV)**:
+    - Best Parameters: `{'fit_intercept': False, 'positive': False}`
+    - Best CV Score: 0.8428
+    - MAE: 0.8314
+    - MSE: 13.7068
+    - R² Score: 0.7354
+- **Linear Regression (Randomized Search CV)**:
+    - Best Parameters: `{'positive': False, 'fit_intercept': True}`
+    - Best CV Score: 0.8413
+    - MAE: 0.8314
+    - MSE: 13.7068
+    - R² Score: 0.7354
+
+*(Further models like SVM and Decision Tree are currently under construction.)*
