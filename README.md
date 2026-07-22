@@ -15,7 +15,7 @@ This notebook details a machine learning project focused on predicting `FinalMan
 ### Preprocessing Steps Performed
 
 #### 1. Data Loading & Initial Exploration
-- Dataset loaded from :  https://archive.ics.uci.edu/dataset/513/real+time+election+results+portugal+2019 .
+- Dataset loaded from : https://archive.ics.uci.edu/dataset/513/real+time+election+results+portugal+2019 .
 - Initial checks performed using `head()`, `shape`, `info()`, and `describe()` to understand data types, dimensions, and basic statistics.
 
 #### 2. Missing Value & Duplicate Handling
@@ -147,3 +147,38 @@ This notebook details a machine learning project focused on predicting `FinalMan
     - Best Parameters: `{'kernel': 'rbf', 'gamma': 'scale', 'epsilon': 0.01, 'C': 100}`
     - Best R² score (CV): 0.9999
 
+## Deep Learning Models
+
+#### 6. TensorFlow Model
+- **ANN Model**:
+    - MSE: 0.0111
+    - MAE: 0.0245
+    - R² Score: 0.9998
+
+#### 7. PyTorch Model (Regression)
+- **ANN Model**:
+    - The PyTorch model has been adapted for regression. Its architecture now outputs a single continuous value without a final activation function like sigmoid, and it uses Mean Squared Error (MSE) as its loss function.
+    - **To see the metrics for the PyTorch model, please run the corresponding cells in the notebook.**
+
+## Evaluation Comparison Table
+
+| Model                                         | MSE      | MAE      | R² Score |
+|:----------------------------------------------|:---------|:---------|:---------|
+| KNN Regressor (Baseline)                      | 0.1363   | 0.0236   | 0.9974   |
+| KNN Regressor (Boosting)                      | 0.0002   | 0.0009   | 0.999996 |
+| KNN Regressor (Grid Search CV)                | 0.0160   | 0.0023   | 0.9997   |
+| KNN Regressor (Randomized Search CV)          | 0.0261   | 0.0088   | 0.9995   |
+| SVR (Baseline)                                | 0.0043   | 0.0551   | 0.9999   |
+| SVR (Bagging)                                 | 0.0058   | 0.0562   | 0.9999   |
+| Linear Regression (Baseline)                  | 13.7068  | 0.8314   | 0.7354   |
+| Linear Regression (Boosting)                  | 14.0666  | 0.7960   | 0.7285   |
+| Linear Regression (Grid Search CV)            | 13.7068  | 0.8314   | 0.7354   |
+| Linear Regression (Randomized Search CV)      | 13.7068  | 0.8314   | 0.7354   |
+| Decision Tree Regressor (Baseline)            | 0.0018   | 0.0018   | 0.99996  |
+| Decision Tree Regressor (Bagging/Random Forest)| 0.0758   | 0.0137   | 0.9985   |
+| Decision Tree Regressor (Grid Search CV)      | 0.0180   | 0.0219   | 0.9997   |
+| Decision Tree Regressor (Randomized Search CV)| 0.3678   | 0.0294   | 0.9929   |
+| TensorFlow ANN Model                          | 0.0111   | 0.0245   | 0.9998   |
+
+
+***Based on the evaluation comparison table, the KNN Regressor (Boosting) model appears to be the best performing. It boasts the highest R² Score of 0.999996 and the lowest Mean Squared Error (MSE) of 0.0002, along with a very low Mean Absolute Error (MAE) of 0.0009. These metrics indicate that it provides the most accurate predictions for FinalMandates among the models evaluated so far.***
